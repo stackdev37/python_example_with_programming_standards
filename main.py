@@ -79,7 +79,8 @@ rec = Rectangle(1,2,5,10)
 rec.draw()
 cir = Circle(3, 3, 10)
 cir.draw()
-
+sqr = Square(3,3, 10)
+sqr.draw()
 
 
 
