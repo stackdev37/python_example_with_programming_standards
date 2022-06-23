@@ -1,29 +1,51 @@
+from asyncio.windows_events import NULL
 import math
+import six
 
 class Shape:
-    def __init__(self,x,y, color = "black"):
-        self.name = "Shape"
+    def __init__(self, x, y, color = 'black'):
+        if not isinstance(x, six.integer_types):
+            print('Type error: X')
+            x = 0
+        if not isinstance(y, six.integer_types):
+            print('Type error: Y')
+            y = 0
+        self.name = 'Shape'
         self.x = x
         self.y = y
         self.color = color
 
     def draw(self):
-        print("Drawing",self.name,"at origin x:",self.x,"y:",self.y)
+        print('Drawing', self.name, 'at origin x:', self.x, 'y:', self.y)
 
     def setColor(self, color):
         self.color = color
+
+    def getPythonVersion():
+        if six.PY2:
+            # something in PY2
+            print('Python version: 2.x')
+        else:
+            #something in PY3
+            print('Python version: 3.x')
     
 class Rectangle(Shape):
-    def __init__(self,x,y,height,width):
-        Shape.__init__(self,x,y)
-        self.name = "Rectangle"
+    def __init__(self, x, y, height, width):
+        Shape.__init__(self, x, y)
+        if not isinstance(width, six.integer_types):
+            print('Type error: width')
+            width = 0
+        if not isinstance(height, six.integer_types):
+            print('Type error: height')
+            height = 0
+        self.name = 'Rectangle'
         self.height = height
         self.width = width
     
     #overriding base class definition
     def draw(self):
-        print("Drawing",self.name,"at origin x:",self.x,"y:",self.y)
-        print("Height:",self.height,"Width:",self.width)
+        print('Drawing', self.name, 'at origin x:', self.x,'y:', self.y)
+        print('Height:', self.height, 'Width:', self.width)
 
     def set_width(self, width):
         self.width = width
@@ -35,15 +57,18 @@ class Rectangle(Shape):
         return self.width * self.height
 
 class Square(Shape):
-    def __init__(self,x,y,width):
-        Shape.__init__(self,x,y)
-        self.name = "Square"
+    def __init__(self, x, y, width):
+        Shape.__init__(self, x, y)
+        if not isinstance(width, six.integer_types):
+            print('Type error: width')
+            width = 0
+        self.name = 'Square'
         self.width = width
     
     #overriding base class definition
     def draw(self):
-        print("Drawing",self.name,"at origin x:",self.x,"y:",self.y)
-        print("Width:",self.width)
+        print('Drawing', self.name, 'at origin x:', self.x, 'y:', self.y)
+        print('Width:', self.width)
 
     def set_width(self, width):
         self.width = width
@@ -54,12 +79,15 @@ class Square(Shape):
 class Circle(Shape):
     def __init__(self, x, y,  radius):
         Shape.__init__(self, x, y)
-        self.name = "Circle"
+        if not isinstance(radius, six.integer_types):
+            print('Type error: radius')
+            width = 0
+        self.name = 'Circle'
         self.radius = radius
     #overriding base class definition
     def draw(self):
-        print("Drawing",self.name,"at origin x:",self.x,"y:",self.y)
-        print("Radius:",self.radius)
+        print('Drawing', self.name, 'at origin x:', self.x, 'y:', self.y)
+        print('Radius:', self.radius)
 
     def get_radius(self):
         return self.radius
@@ -73,9 +101,9 @@ class Circle(Shape):
     def get_perimeter(self):
         return 2 * math.pi * self.radius
     
-sh = Shape(3,4)
+sh = Shape('qq', 4)
 sh.draw()
-rec = Rectangle(1,2,5,10)
+rec = Rectangle(1, 2, 5, 10)
 rec.draw()
 cir = Circle(3, 3, 10)
 cir.draw()
