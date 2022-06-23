@@ -4,21 +4,38 @@ import six
 
 class Shape:
     def __init__(self, x, y, color = 'black'):
+        # init default values
+        self.x = 0
+        self.y = 0
+        # validate check
         if not isinstance(x, six.integer_types):
-            print('Type error: X')
+            print('Invalid data:: X')
             x = 0
         if not isinstance(y, six.integer_types):
-            print('Type error: Y')
+            print('Invalid data:: Y')
             y = 0
+        # init values
         self.name = 'Shape'
-        self.x = x
-        self.y = y
-        self.color = color
+        self.set_x(x)
+        self.set_y(y)
+        self.set_color(color)
 
     def draw(self):
         print('Drawing', self.name, 'at origin x:', self.x, 'y:', self.y)
 
-    def setColor(self, color):
+    def set_x(self, x):
+        if not isinstance(x, six.integer_types):
+            print('Invalid data:: X')
+        else:
+            self.x = x
+
+    def set_y(self, y):
+        if not isinstance(y, six.integer_types):
+            print('Invalid data:: Y')
+        else:
+            self.y = y
+
+    def set_color(self, color):
         self.color = color
 
     def getPythonVersion():
@@ -31,59 +48,84 @@ class Shape:
     
 class Rectangle(Shape):
     def __init__(self, x, y, height, width):
+        # init default value
         Shape.__init__(self, x, y)
-        if not isinstance(width, six.integer_types):
-            print('Type error: width')
-            width = 0
-        if not isinstance(height, six.integer_types):
-            print('Type error: height')
-            height = 0
+        self.width = 0
+        self.height = 0
+        # init values
         self.name = 'Rectangle'
-        self.height = height
-        self.width = width
+        self.set_width(width)
+        self.set_height(height)
     
+    def validate_width(self, width):
+        if not isinstance(width, six.integer_types):
+            print('Invalid data:: width')
+            return False
+        return True
+    
+    def validate_height(self, height):
+        if not isinstance(height, six.integer_types):
+            print('Invalid data:: height')
+            return False
+        return True
     #overriding base class definition
     def draw(self):
         print('Drawing', self.name, 'at origin x:', self.x,'y:', self.y)
         print('Height:', self.height, 'Width:', self.width)
 
     def set_width(self, width):
-        self.width = width
+        if self.validate_width(width):
+            self.width = width
 
     def set_height(self, height):
-        self.height = height
+        if self.validate_height(height):
+            self.height = height
 
     def get_area(self):
         return self.width * self.height
 
 class Square(Shape):
     def __init__(self, x, y, width):
+        # init values
         Shape.__init__(self, x, y)
-        if not isinstance(width, six.integer_types):
-            print('Type error: width')
-            width = 0
+        self.width = 0
+        # init values
         self.name = 'Square'
-        self.width = width
-    
+        self.set_width(width)
+
+    def validate_width(self, width):
+        if not isinstance(width, six.integer_types):
+            print('Invalid data:: width')
+            return False
+        return True
+
     #overriding base class definition
     def draw(self):
         print('Drawing', self.name, 'at origin x:', self.x, 'y:', self.y)
         print('Width:', self.width)
 
     def set_width(self, width):
-        self.width = width
+        if self.validate_width(width):
+            self.width = width
 
     def get_area(self):
         return 2 * self.width
 
 class Circle(Shape):
     def __init__(self, x, y,  radius):
+        # init values
         Shape.__init__(self, x, y)
-        if not isinstance(radius, six.integer_types):
-            print('Type error: radius')
-            width = 0
+        self.radius = 0
+            
         self.name = 'Circle'
-        self.radius = radius
+        self.set_radius(radius)
+    
+    def validate_radius(self, radius):
+        if not isinstance(radius, six.integer_types):
+            print('Invalid data:: radius')
+            return False
+        return True
+
     #overriding base class definition
     def draw(self):
         print('Drawing', self.name, 'at origin x:', self.x, 'y:', self.y)
@@ -93,7 +135,8 @@ class Circle(Shape):
         return self.radius
 
     def set_radius(self, radius):
-        self.radius = radius
+        if self.validate_radius(radius):
+            self.radius = radius
 
     def get_area(self):
         return math.pi * self.radius ** 2
