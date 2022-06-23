@@ -1,4 +1,5 @@
 import six
+import math
 from .shape import Shape
 
 class Circle(Shape):
