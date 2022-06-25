@@ -6,9 +6,9 @@ class Circle(Shape):
     def __init__(self, x, y,  radius):
         # init values
         Shape.__init__(self, x, y)
-        self.radius = 0
+        self.IV_radius = 0
             
-        self.name = 'Circle'
+        self.IV_name = 'Circle'
         self.set_radius(radius)
     
     def validate_radius(self, radius):
@@ -19,15 +19,15 @@ class Circle(Shape):
 
     #overriding base class definition
     def draw(self):
-        print('Drawing', self.name, 'at origin x:', self.x, 'y:', self.y)
-        print('Radius:', self.radius)
+        print('Drawing', self.IV_name, 'at origin x:', self.IV_x, 'y:', self.IV_y)
+        print('Radius:', self.IV_radius)
 
     def get_radius(self):
-        return self.radius
+        return self.IV_radius
 
     def set_radius(self, radius):
         if self.validate_radius(radius):
-            self.radius = radius
+            self.IV_radius = radius
 
     def get_area(self):
-        return math.pi * self.radius * 2
+        return math.pi * self.IV_radius * 2

@@ -4,10 +4,10 @@ class Rectangle(Shape):
     def __init__(self, x, y, height, width):
         # init default value
         Shape.__init__(self, x, y)
-        self.width = 0
-        self.height = 0
+        self.IV_width = 0
+        self.IV_height = 0
         # init values
-        self.name = 'Rectangle'
+        self.IV_name = 'Rectangle'
         self.set_width(width)
         self.set_height(height)
     
@@ -24,17 +24,17 @@ class Rectangle(Shape):
         return True
     #overriding base class definition
     def draw(self):
-        print('Drawing', self.name, 'at origin x:', self.x,'y:', self.y)
-        print('Height:', self.height, 'Width:', self.width)
+        print('Drawing', self.IV_name, 'at origin x:', self.IV_x,'y:', self.IV_y)
+        print('Height:', self.IV_height, 'Width:', self.IV_width)
 
     def set_width(self, width):
         if self.validate_width(width):
-            self.width = width
+            self.IV_width = width
 
     def set_height(self, height):
         if self.validate_height(height):
-            self.height = height
+            self.IV_height = height
 
     def get_area(self):
-        return self.width * self.height
+        return self.IV_width * self.IV_height
 
