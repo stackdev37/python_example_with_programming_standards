@@ -1,6 +1,12 @@
 import six
 from .shape import Shape
+# Missing typing on method definitions.
+
 class Rectangle(Shape):
+    # Missing IV_width at class definition level.
+    # Missing IV_height at class definition level.
+    # Missing IV_name at class definition level.
+
     def __init__(self, x, y, height, width):
         # init default value
         Shape.__init__(self, x, y)
@@ -8,8 +14,11 @@ class Rectangle(Shape):
         self.IV_height = 0
         # init values
         self.IV_name = 'Rectangle'
+        # How do we know that the width and height are correct? what if we parse a string? a list or a dictionary?
         self.set_width(width)
         self.set_height(height)
+        # How do developers know when it failed?
+        # If any of these failed, what are we expecting? an exception, a message? a logger? how do you handle error that might happen in the future?
     
     def validate_width(self, width):
         if not isinstance(width, six.integer_types):
