@@ -35,4 +35,4 @@ class Circle(Shape):
         self.IV_radius = radius
 
     def get_area(self) -> int:
-        return math.pi * self.IV_radius * 2
+        return math.pi * self.IV_radius ** 2
