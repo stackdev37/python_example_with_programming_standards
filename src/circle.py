@@ -9,7 +9,7 @@ class Circle(Shape):
 
     def __init__(self, x: int, y: int,  radius: int) -> None:
         # init values
-        Shape.__init__(self, x, y)
+        super().__init__(x, y)
         self.IV_radius = 0
             
         self.IV_name = 'Circle'
