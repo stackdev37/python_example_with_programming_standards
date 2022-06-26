@@ -16,7 +16,7 @@ class Circle(Shape):
         self.set_radius(radius)
     
     def validate_radius(self, radius: int) -> Boolean:
-        if isinstance(radius, six.integer_types):
+        if isinstance(radius, six.integer_types)  and type(radius) != type(True): 
             return True
         else: 
             print('Invalid data:: radius')

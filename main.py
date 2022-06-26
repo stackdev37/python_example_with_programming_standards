@@ -17,5 +17,5 @@ sqr.draw()
 
 
 # What will happen if this is used inside teh code? how do people know it failed because of this and how would they be able to avoid this error? they need to catch it before the product it's published. 
-# sh = Shape(4, 'qq', 4)
-# sh.draw()
+sh = Shape(12, 12)
+sh.draw()

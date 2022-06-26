@@ -16,7 +16,7 @@ class Square(Shape):
         self.set_width(width)
 
     def validate_width(self, width: int) -> Boolean:
-        if isinstance(width, six.integer_types): 
+        if isinstance(width, six.integer_types) and type(width) != type(True): 
             return True
         else: 
             print('Invalid data:: width')

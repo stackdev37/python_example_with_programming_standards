@@ -18,14 +18,14 @@ class Rectangle(Shape):
         self.set_height(height)
     
     def validate_width(self, width: int) -> Boolean:
-        if isinstance(width, six.integer_types):
+        if isinstance(width, six.integer_types) and type(width) != type(True): 
             return True
         else: 
             print('Invalid data:: width')
             return False
     
     def validate_height(self, height: int) -> Boolean:
-        if isinstance(height, six.integer_types):            
+        if isinstance(height, six.integer_types) and type(height) != type(True): 
             return True
         else:
             print('Invalid data:: height')

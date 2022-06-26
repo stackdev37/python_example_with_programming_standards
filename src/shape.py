@@ -21,13 +21,13 @@ class Shape:
         print('Drawing', self.IV_name, 'at origin x:', self.IV_x, 'y:', self.IV_y)
 
     def set_x(self, x) -> Boolean:
-        if isinstance(x, six.integer_types): 
+        if isinstance(x, six.integer_types) and type(x) != type(True): 
             self.IV_x = x
             return True
         return False
 
     def set_y(self, y: int) -> Boolean:
-        if isinstance(y, six.integer_types): 
+        if isinstance(y, six.integer_types) and type(y) != type(True): 
             self.IV_y = y
             return True
         return False
